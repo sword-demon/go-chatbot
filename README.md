@@ -43,3 +43,12 @@ public class BubbleSort {
 --- PASS: TestAsk (21.77s)
 PASS
 ```
+
+## 从配置文件获取配置的 key 的信息，从命令行获取问题
+```bash
+go run cmd/main.go -question=xxx
+
+# or
+go build cmd/main.go
+./main -question=xxx
+```

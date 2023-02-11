@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go-chatbot/common"
 	"go-chatbot/domain/repository/impl"
 	"go-chatbot/infrastructure"
 	"log"
@@ -12,8 +11,9 @@ import (
 func TestAsk(t *testing.T) {
 	infrastructure.InitConfig()
 	question := "孙悟空的师傅是谁"
+	key := infrastructure.AppConfig.OpenaiKey
 	repository := impl.NewOpenAIRepository()
-	gtp, err := repository.DoChatGTP(question)
+	gtp, err := repository.DoChatGTP(key, question)
 	if err != nil {
 		log.Fatalln(err.Error())
 		return
@@ -23,5 +23,5 @@ func TestAsk(t *testing.T) {
 
 func TestGetAppConfig(t *testing.T) {
 	infrastructure.InitConfig()
-	fmt.Println(common.AppConfig.OpenaiKey)
+	fmt.Println(infrastructure.AppConfig.OpenaiKey)
 }
